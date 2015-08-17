@@ -6,7 +6,7 @@
 /*
 Plugin Name: Impact Hub Supercharger
 Plugin URI: http://wordpress.org/plugins/impact-hub-super-charger/
-Description: This plugin is mean to add special functionality to the Impact Hub Bergen site.
+Description: This plugin is meant to add special functionality to the Impact Hub Bergen site.
 Author: Thunki SA
 Version: 1.0
 Author URI: http://nilsnh.no/
@@ -76,19 +76,15 @@ function rmcc_post_listing_shortcode1( $atts ) {
 
 // Remove prefix 'protected' and 'private' prefixes from posts
 function the_title_trim($title) {
-	// Might aswell make use of this function to escape attributes
 	$title = esc_attr($title);
-	// What to find in the title
 	$findthese = array(
 		'#Protected:#', // # is just the delimeter
 		'#Private:#'
 		);
-	// What to replace it with
 	$replacewith = array(
 		'', // What to replace protected with
 		'' // What to replace private with
 		);
-	// Items replace by array key
 	$title = preg_replace($findthese, $replacewith, $title);
 	return $title;
 }
@@ -98,7 +94,7 @@ function section_feed_shortcode( $atts ) {
 	extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
 
 	if ( !is_user_logged_in() ) {
-		return '<p>' . __('Du må være innlogget for å kunne lese medlemsressursene.)') . '</p>';
+		return '<p>' . __('Du må være innlogget for å kunne lese medlemsressursene.') . '</p>';
 	}
 
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -112,8 +108,8 @@ function section_feed_shortcode( $atts ) {
 
 	$list = ' ';
 
-	while ( have_posts() ) { the_post();
-
+	while ( have_posts() ) {
+		the_post();
 		$list .= '<article class="listing-view clearfix">'
 		. '<div class="listing-content">'
 		. '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>'
@@ -129,8 +125,8 @@ function section_feed_shortcode( $atts ) {
 	. $list
 	. '<br/>'
 	.	'<div class="nav-pagination">'
-	. '<div class="nav-previous">' . get_next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts' ) ) . '</div>'
-	. '<div class="nav-next">' . get_previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>' ) ) . '</div>'
+	. '<div class="nav-previous">' . get_next_posts_link( __( '<span class="meta-nav">&larr;</span> Eldre ressurser' ) ) . '</div>'
+	. '<div class="nav-next">' . get_previous_posts_link( __( 'Nyere ressurser <span class="meta-nav">&rarr;</span>' ) ) . '</div>'
 	. '</div>'
 	. '</div>' .
 	wp_reset_query();
