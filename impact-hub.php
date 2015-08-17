@@ -74,8 +74,32 @@ function rmcc_post_listing_shortcode1( $atts ) {
 	}
 }
 
+// Remove prefix 'protected' and 'private' prefixes from posts
+function the_title_trim($title) {
+	// Might aswell make use of this function to escape attributes
+	$title = esc_attr($title);
+	// What to find in the title
+	$findthese = array(
+		'#Protected:#', // # is just the delimeter
+		'#Private:#'
+		);
+	// What to replace it with
+	$replacewith = array(
+		'', // What to replace protected with
+		'' // What to replace private with
+		);
+	// Items replace by array key
+	$title = preg_replace($findthese, $replacewith, $title);
+	return $title;
+}
+add_filter('the_title', 'the_title_trim');
+
 function section_feed_shortcode( $atts ) {
 	extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
+
+	if ( !is_user_logged_in() ) {
+		return '<p>' . __('Du må være innlogget for å kunne lese medlemsressursene.)') . '</p>';
+	}
 
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
@@ -96,7 +120,6 @@ function section_feed_shortcode( $atts ) {
 		.'<p>' . get_the_excerpt() . '</p>'
 		. '<a href="' . get_permalink() . '">' . 'View &raquo;' . '</a>'
 		. '</div>'
-		. '<a class="listing-thumb" href="' . get_permalink() . '">' . get_the_post_thumbnail($page->ID, 'listing-thumb')  . '<span></span></a>'
 		. '</article>';
 	}
 
@@ -113,6 +136,6 @@ function section_feed_shortcode( $atts ) {
 	wp_reset_query();
 
 }
-add_shortcode( 'feed', 'section_feed_shortcode' );
+add_shortcode( 'list-posts', 'section_feed_shortcode' );
 
 ?>
