@@ -13,9 +13,8 @@ Author URI: http://nilsnh.no/
 */
 
 add_action( 'init', 'create_resource_post_type' );
-
 function create_resource_post_type() {
-	register_post_type( 'resource',
+	register_post_type( 'impcthub-resource',
 		array(
 			'labels' => array(
 				'name' => __( 'Resources' ),
@@ -28,6 +27,22 @@ function create_resource_post_type() {
 		);
 }
 
+add_action( 'init', 'create_member_profile_post_type' );
+function create_member_profile_post_type() {
+	register_post_type( 'impcthub-member',
+		array(
+			'labels' => array(
+				'name' => __( 'Member profile' ),
+				'singular_name' => __( 'Member profile' )
+				),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'members')
+			)
+		);
+}
+
+// Code for automatically making a post type private
 // source: http://wordpress.stackexchange.com/a/118976
 add_action( 'post_submitbox_misc_actions' , 'wpse118970_change_visibility_metabox_value' );
 function wpse118970_change_visibility_metabox_value(){
@@ -47,30 +62,6 @@ function wpse118970_change_visibility_metabox_value(){
 		}) (jQuery);
 	</script>
 	<?php
-}
-
-add_shortcode( 'list-resources', 'rmcc_post_listing_shortcode1' );
-function rmcc_post_listing_shortcode1( $atts ) {
-	ob_start();
-	$query = new WP_Query( array(
-		'post_type' => 'resource',
-		'color' => 'blue',
-		'posts_per_page' => -1,
-		'order' => 'ASC',
-		'orderby' => 'title',
-		) );
-		if ( $query->have_posts() ) { ?>
-		<ul class="resources-listing">
-			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-				<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				</li>
-			<?php endwhile;
-			wp_reset_postdata(); ?>
-		</ul>
-		<?php $myvariable = ob_get_clean();
-		return $myvariable;
-	}
 }
 
 // Remove prefix 'protected' and 'private' prefixes from posts
