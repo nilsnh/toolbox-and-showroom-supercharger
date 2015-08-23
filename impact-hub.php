@@ -49,7 +49,6 @@ function wpse118970_change_visibility_metabox_value(){
 	<?php
 }
 
-// create shortcode to list all clothes which come in blue
 add_shortcode( 'list-resources', 'rmcc_post_listing_shortcode1' );
 function rmcc_post_listing_shortcode1( $atts ) {
 	ob_start();
@@ -110,7 +109,7 @@ function section_feed_shortcode( $atts ) {
 
 	while ( have_posts() ) {
 		the_post();
-		$list .= '<article class="listing-view clearfix">'
+		$list .= '<article class="listing-view post-type-'. $type .' clearfix">'
 		. '<div class="listing-content">'
 		. '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>'
 		.'<p>' . get_the_excerpt() . '</p>'
@@ -121,7 +120,7 @@ function section_feed_shortcode( $atts ) {
 
 	return
 
-	'<div class="listings clearfix">'
+	'<div class="listings clearfix post-type-'. $type .'">'
 	. $list
 	. '<br/>'
 	.	'<div class="nav-pagination">'
