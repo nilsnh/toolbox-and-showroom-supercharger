@@ -105,7 +105,7 @@ function section_feed_shortcode( $atts ) {
 		$list .= '<article class="listing-view post-type-'. $type .' clearfix">'
 		. '<div class="listing-content">'
 		. '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>'
-		.'<p>' . get_the_excerpt() . '</p>'
+		. '<div class="entry-content">' . apply_filters( 'the_content', get_the_content() ) . '</div>'
 		. '<a href="' . get_permalink() . '">' . 'View &raquo;' . '</a>'
 		. '</div>'
 		. '</article>';
