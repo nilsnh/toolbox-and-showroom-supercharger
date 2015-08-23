@@ -106,7 +106,6 @@ function section_feed_shortcode( $atts ) {
 		. '<div class="listing-content">'
 		. '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>'
 		. '<div class="entry-content">' . apply_filters( 'the_content', get_the_content() ) . '</div>'
-		. '<a href="' . get_permalink() . '">' . 'View &raquo;' . '</a>'
 		. '</div>'
 		. '</article>';
 	}
