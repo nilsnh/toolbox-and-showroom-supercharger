@@ -1,4 +1,4 @@
-<?php
+<?php namespace impcthub;
 /**
  * @package Impact_Hub
  * @version 1.0
@@ -12,7 +12,7 @@ Version: 1.0
 Author URI: http://nilsnh.no/
 */
 
-add_action( 'init', 'create_resource_post_type' );
+add_action( 'init', '\impcthub\create_resource_post_type' );
 function create_resource_post_type() {
 	register_post_type( 'impcthub-resource',
 		array(
@@ -23,11 +23,12 @@ function create_resource_post_type() {
 			'public' => true,
 			'has_archive' => true,
 			'taxonomies' => array('category'),
+			'rewrite' => array('slug' => 'resources')
 			)
 		);
 }
 
-add_action( 'init', 'create_member_profile_post_type' );
+add_action( 'init', '\impcthub\create_member_profile_post_type' );
 function create_member_profile_post_type() {
 	register_post_type( 'impcthub-member',
 		array(
@@ -44,7 +45,7 @@ function create_member_profile_post_type() {
 
 // Code for automatically making a post type private
 // source: http://wordpress.stackexchange.com/a/118976
-add_action( 'post_submitbox_misc_actions' , 'wpse118970_change_visibility_metabox_value' );
+add_action( 'post_submitbox_misc_actions' , '\impcthub\wpse118970_change_visibility_metabox_value' );
 function wpse118970_change_visibility_metabox_value(){
 	global $post;
 	if ($post->post_type != 'resource') return;
@@ -65,6 +66,7 @@ function wpse118970_change_visibility_metabox_value(){
 }
 
 // Remove prefix 'protected' and 'private' prefixes from posts
+add_filter('the_title', '\impcthub\the_title_trim');
 function the_title_trim($title) {
 	$title = esc_attr($title);
 	$findthese = array(
@@ -78,8 +80,8 @@ function the_title_trim($title) {
 	$title = preg_replace($findthese, $replacewith, $title);
 	return $title;
 }
-add_filter('the_title', 'the_title_trim');
 
+add_shortcode( 'list-posts', '\impcthub\section_feed_shortcode' );
 function section_feed_shortcode( $atts ) {
 	extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
 
@@ -122,6 +124,5 @@ function section_feed_shortcode( $atts ) {
 	wp_reset_query();
 
 }
-add_shortcode( 'list-posts', 'section_feed_shortcode' );
 
 ?>
