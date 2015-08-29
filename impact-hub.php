@@ -6,7 +6,7 @@
 /*
 Plugin Name: Impact Hub Supercharger
 Plugin URI: http://wordpress.org/plugins/impact-hub-super-charger/
-Description: This plugin is meant to add special functionality to the Impact Hub Bergen site.
+Description: This plugin adds custom posts 'Resources' and 'Member' and shortcode for displaying them.
 Author: Thunki SA
 Version: 1.0
 Author URI: http://nilsnh.no/
@@ -17,13 +17,12 @@ function create_resource_post_type() {
 	register_post_type( 'impcthub-resource',
 		array(
 			'labels' => array(
-				'name' => __( 'Ressurser' ),
-				'singular_name' => __( 'Ressurs' )
+				'name' => __( 'Resources' ),
+				'singular_name' => __( 'Resource' )
 				),
 			'public' => true,
 			'has_archive' => true,
-			'taxonomies' => array('category'),
-			'rewrite' => array('slug' => 'resources')
+			'taxonomies' => array('category')
 			)
 		);
 }
@@ -33,26 +32,25 @@ function create_member_profile_post_type() {
 	register_post_type( 'impcthub-member',
 		array(
 			'labels' => array(
-				'name' => __( 'Medlemsprofil' ),
-				'singular_name' => __( 'Medlemsprofil' )
+				'name' => __( 'Member profiles' ),
+				'singular_name' => __( 'Member profile' )
 				),
 			'public' => true,
 			'has_archive' => true,
-			'taxonomies' => array('category'),
-			'rewrite' => array('slug' => 'members')
+			'taxonomies' => array('category')
 			)
 		);
 }
 
 // Code for automatically making a post type private
 // source: http://wordpress.stackexchange.com/a/118976
-add_action( 'post_submitbox_misc_actions' , '\impcthub\wpse118970_change_visibility_metabox_value' );
-function wpse118970_change_visibility_metabox_value(){
+add_action( 'post_submitbox_misc_actions' , '\impcthub\change_visibility_metabox_value' );
+function change_visibility_metabox_value(){
 	global $post;
 	if ($post->post_type != 'impcthub-resource') return;
 	$post->post_password = '';
 	$visibility = 'private';
-	$visibility_trans = __('Privat');
+	$visibility_trans = __('Private');
 	?>
 	<script type="text/javascript">
 		(function($){
@@ -72,11 +70,13 @@ function the_title_trim($title) {
 	$title = esc_attr($title);
 	$findthese = array(
 		'#Protected:#', // # is just the delimeter
-		'#Private:#'
+		'#Private:#',
+		'#Privat:#',
 		);
 	$replacewith = array(
 		'', // What to replace protected with
-		'' // What to replace private with
+		'', // What to replace private with
+		''
 		);
 	$title = preg_replace($findthese, $replacewith, $title);
 	return $title;
@@ -87,7 +87,7 @@ function section_feed_shortcode( $atts ) {
 	extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
 
 	if ($type == 'impcthub-resource' && !is_user_logged_in() ) {
-		return '<p>' . __('Du må være innlogget for å kunne lese medlemsressursene.') . '</p>';
+		return '';
 	}
 
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
