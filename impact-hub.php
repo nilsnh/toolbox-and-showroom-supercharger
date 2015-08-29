@@ -86,10 +86,6 @@ add_shortcode( 'list-posts', '\impcthub\section_feed_shortcode' );
 function section_feed_shortcode( $atts ) {
 	extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
 
-	if ($type == 'impcthub-resource' && !is_user_logged_in() ) {
-		return '';
-	}
-
 	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 	query_posts(  array (
