@@ -17,8 +17,8 @@ function create_resource_post_type() {
 	register_post_type( 'impcthub-resource',
 		array(
 			'labels' => array(
-				'name' => __( 'Resources' ),
-				'singular_name' => __( 'Resource' )
+				'name' => __( 'Ressurser' ),
+				'singular_name' => __( 'Ressurs' )
 				),
 			'public' => true,
 			'has_archive' => true,
@@ -33,11 +33,12 @@ function create_member_profile_post_type() {
 	register_post_type( 'impcthub-member',
 		array(
 			'labels' => array(
-				'name' => __( 'Member profile' ),
-				'singular_name' => __( 'Member profile' )
+				'name' => __( 'Medlemsprofil' ),
+				'singular_name' => __( 'Medlemsprofil' )
 				),
 			'public' => true,
 			'has_archive' => true,
+			'taxonomies' => array('category'),
 			'rewrite' => array('slug' => 'members')
 			)
 		);
@@ -48,10 +49,10 @@ function create_member_profile_post_type() {
 add_action( 'post_submitbox_misc_actions' , '\impcthub\wpse118970_change_visibility_metabox_value' );
 function wpse118970_change_visibility_metabox_value(){
 	global $post;
-	if ($post->post_type != 'resource') return;
+	if ($post->post_type != 'impcthub-resource') return;
 	$post->post_password = '';
 	$visibility = 'private';
-	$visibility_trans = __('Private');
+	$visibility_trans = __('Privat');
 	?>
 	<script type="text/javascript">
 		(function($){
@@ -85,7 +86,7 @@ add_shortcode( 'list-posts', '\impcthub\section_feed_shortcode' );
 function section_feed_shortcode( $atts ) {
 	extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
 
-	if ( !is_user_logged_in() ) {
+	if ($type == 'impcthub-resource' && !is_user_logged_in() ) {
 		return '<p>' . __('Du må være innlogget for å kunne lese medlemsressursene.') . '</p>';
 	}
 
