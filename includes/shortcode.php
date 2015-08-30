@@ -1,6 +1,7 @@
 <?php namespace impcthub;
 
 add_shortcode( 'list-posts', '\impcthub\section_feed_shortcode' );
+
 function section_feed_shortcode( $atts ) {
   extract( shortcode_atts( array( 'limit' => -1, 'type' => 'post'), $atts ) );
 

@@ -12,8 +12,9 @@ Version: 1.0
 Author URI: http://nilsnh.no/
 */
 
-require_once( plugin_dir_path( __FILE__ ) .	'/includes/add-custom-posts.php' );
-require_once( plugin_dir_path( __FILE__ ) .	'/includes/add-shortcode.php' );
+require_once( plugin_dir_path( __FILE__ ) .	'/includes/user-role.php' );
+require_once( plugin_dir_path( __FILE__ ) .	'/includes/custom-posts.php' );
+require_once( plugin_dir_path( __FILE__ ) .	'/includes/shortcode.php' );
 require_once( plugin_dir_path( __FILE__ ) .	'/includes/other.php' );
 
 ?>
