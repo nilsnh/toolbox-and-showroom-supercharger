@@ -5,9 +5,11 @@ register_activation_hook( plugin_dir_path( __FILE__ ) . '/../index.php',
 
 function add_role_on_plugin_activation() {
 
-  remove_role( 'hubmember' );
+  $role = get_role_name();
 
-  add_role( 'hubmember', 'Hub member',
+  remove_role( $role );
+
+  add_role( $role , 'Hub member',
     array(
       'read' => true,
       'read_private_posts' => true,
@@ -24,34 +26,27 @@ register_deactivation_hook( plugin_dir_path( __FILE__ ) . '/../index.php',
   '\impcthub\remove_role_on_plugin_deactivation' );
 
 function remove_role_on_plugin_deactivation() {
-  remove_role( 'hubmember' );
+  remove_role( get_role_name() );
 }
 
-add_action( 'admin_bar_init', '\impcthub\add_style_sheet_to_hide_menu_elements_for_hubmembers' );
-
-// Hide menu elements if activated
-
-function add_style_sheet_to_hide_menu_elements_for_hubmembers () {
-  if (is_current_user_hub_member()) {
-    wp_enqueue_style(
-      'impact-hub-supercharger-plugin',
-      plugins_url('../styles/style.css', __FILE__));
-  }
+function get_role_name() {
+  return "hubmember";
 }
 
-add_filter('admin_body_class', '\impcthub\add_hub_member_class');
+/* Add logged in user role to admin body as class so that we
+can style by it later.
+*/
+add_filter('admin_body_class', '\impcthub\add_user_role_to_classes');
 
-function add_hub_member_class($classes) {
-  if (is_current_user_hub_member()) {
-    $classes .= " hubmember-user-logged-in";
-  }
+function add_user_role_to_classes($classes) {
+  foreach (get_current_user_roles() as $role)
+    $classes .= 'current-user-role-' . $role;
   return $classes;
 }
 
-function is_current_user_hub_member() {
+function get_current_user_roles() {
   $current_user = wp_get_current_user();
-  $roles = $current_user->roles;
-  return in_array("hubmember", $roles);
+  return $current_user->roles;
 }
 
 ?>
