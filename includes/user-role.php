@@ -27,15 +27,31 @@ function remove_role_on_plugin_deactivation() {
   remove_role( 'hubmember' );
 }
 
+add_action( 'admin_bar_init', '\impcthub\add_style_sheet_to_hide_menu_elements_for_hubmembers' );
+
 // Hide menu elements if activated
-function hide_menu_elements_for_hubmembers () {
-  $current_user = get_currentuserinfo();
-  if ( !($current_user instanceof WP_User) )
-     return;
+
+function add_style_sheet_to_hide_menu_elements_for_hubmembers () {
+  if (is_current_user_hub_member()) {
+    wp_enqueue_style(
+      'impact-hub-supercharger-plugin',
+      plugins_url('../styles/style.css', __FILE__));
+  }
+}
+
+add_filter('admin_body_class', '\impcthub\add_hub_member_class');
+
+function add_hub_member_class($classes) {
+  if (is_current_user_hub_member()) {
+    $classes .= " hubmember-user-logged-in";
+  }
+  return $classes;
+}
+
+function is_current_user_hub_member() {
+  $current_user = wp_get_current_user();
   $roles = $current_user->roles;
-
-  echo $roles;
-
+  return in_array("hubmember", $roles);
 }
 
 ?>

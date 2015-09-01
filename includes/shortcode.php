@@ -32,8 +32,8 @@ function section_feed_shortcode( $atts ) {
   . $list
   . '<br/>'
   . '<div class="nav-pagination">'
-  . '<div class="nav-previous">' . get_next_posts_link( __( '<span class="meta-nav">&larr;</span> Eldre ressurser' ) ) . '</div>'
-  . '<div class="nav-next">' . get_previous_posts_link( __( 'Nyere ressurser <span class="meta-nav">&rarr;</span>' ) ) . '</div>'
+  . '<div class="nav-previous">' . get_next_posts_link( __( '<span class="meta-nav">&larr;</span> Previous' ) ) . '</div>'
+  . '<div class="nav-next">' . get_previous_posts_link( __( 'Next <span class="meta-nav">&rarr;</span>' ) ) . '</div>'
   . '</div>'
   . '</div>' .
   wp_reset_query();
