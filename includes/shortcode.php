@@ -20,6 +20,7 @@ function section_feed_shortcode( $atts ) {
     the_post();
     $list .= '<article class="listing-view post-type-'. $type .' clearfix">'
     . '<div class="listing-content">'
+    . add_post_thumbnail()
     . '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>'
     . '<div class="entry-content">' . apply_filters( 'the_content', get_the_content() ) . '</div>'
     . '</div>'
@@ -38,6 +39,13 @@ function section_feed_shortcode( $atts ) {
   . '</div>' .
   wp_reset_query();
 
+}
+
+function add_post_thumbnail() {
+  $thumbnail = get_the_post_thumbnail();
+  if ($thumbnail) {
+    return '<div class="post-thumbnail">' . get_the_post_thumbnail() . '</div>';
+  }
 }
 
 ?>

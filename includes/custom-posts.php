@@ -5,12 +5,21 @@ function create_resource_post_type() {
   register_post_type( 'impcthub-resource',
     array(
       'labels' => array(
-        'name' => __( 'Resources' ),
+        'name' => __( 'Entrepreneur resources' ),
         'singular_name' => __( 'Resource' )
         ),
       'public' => true,
       'has_archive' => true,
-      'taxonomies' => array('category')
+      'rewrite' => array('slug' => __('toolbox')),
+      'taxonomies' => array('category'),
+      'supports' => array(
+        'title',
+        'editor',
+        'author',
+        'comments',
+        'revisions',
+        'excerpt'
+        )
       )
     );
 }
@@ -20,12 +29,20 @@ function create_member_profile_post_type() {
   register_post_type( 'impcthub-member',
     array(
       'labels' => array(
-        'name' => __( 'Member profiles' ),
-        'singular_name' => __( 'Member profile' )
+        'name' => __( 'Member showcases' ),
+        'singular_name' => __( 'Member showcase' )
         ),
       'public' => true,
       'has_archive' => true,
-      'taxonomies' => array('category')
+      'taxonomies' => array('category'),
+      'rewrite' => array('slug' => __('hubmembers')),
+      'supports' => array(
+        'title',
+        'editor',
+        'thumbnail',
+        'revisions',
+        'excerpt'
+        )
       )
     );
 }
