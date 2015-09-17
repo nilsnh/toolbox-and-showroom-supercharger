@@ -7,7 +7,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin adds custom posts 'Resources' and 'Member' and shortcode for displaying them.
+This plugin adds custom posts "Entrepreneur toolbox" and "Member showroom" and a shortcode for displaying them.
 
 == Description ==
 
