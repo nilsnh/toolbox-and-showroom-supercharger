@@ -6,7 +6,7 @@ function create_resource_post_type() {
     array(
       'labels' => array(
         'name' => __( 'Entrepreneur toolbox' ),
-        'singular_name' => __( 'Resource' )
+        'singular_name' => __( 'Entrepreneur resource' )
         ),
       'public' => true,
       'has_archive' => true,

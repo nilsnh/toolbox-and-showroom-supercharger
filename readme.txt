@@ -15,10 +15,10 @@ This plugin was tailored for the Impact Hub Bergen site. And it might be useful 
 
 What the plugin does:
 
-1. Adds the custom posts "Entrepreneur resources" and "Member showcases".
-1. Make Entrepreneur resources be published as private by default.
+1. Adds the custom posts "Entrepreneur toolbox" and "Member showroom".
+1. Make Entrepreneur toolbox be published as private by default.
 1. Trim away the word "Private:" from private posts.
-1. Enable custom shortcode for listing out resources. It includes pagination and support for displaying featured image.
+1. Enable custom shortcode for listing out custom posts. It includes pagination and support for displaying featured image.
 1. Adds a custom hubmember role.
 1. Add logged-in user role to the body class declaration. So that one might add styles to customize the admin view based on the logged in user's role.
 
