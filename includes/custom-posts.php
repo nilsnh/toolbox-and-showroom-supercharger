@@ -5,7 +5,7 @@ function create_resource_post_type() {
   register_post_type( 'impcthub-resource',
     array(
       'labels' => array(
-        'name' => __( 'Entrepreneur resources' ),
+        'name' => __( 'Entrepreneur toolbox' ),
         'singular_name' => __( 'Resource' )
         ),
       'public' => true,
@@ -29,7 +29,7 @@ function create_member_profile_post_type() {
   register_post_type( 'impcthub-member',
     array(
       'labels' => array(
-        'name' => __( 'Member showcases' ),
+        'name' => __( 'Member showroom' ),
         'singular_name' => __( 'Member showcase' )
         ),
       'public' => true,
