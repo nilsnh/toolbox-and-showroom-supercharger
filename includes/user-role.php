@@ -1,8 +1,5 @@
 <?php namespace impcthub;
 
-register_activation_hook( plugin_dir_path( __FILE__ ) . '/../index.php',
-  '\impcthub\add_role_on_plugin_activation' );
-
 function add_role_on_plugin_activation() {
 
   $role = get_role_name();
@@ -19,10 +16,8 @@ function add_role_on_plugin_activation() {
       'delete_posts' => true,
       'upload_files' => true
       ) );
-}
 
-register_deactivation_hook( plugin_dir_path( __FILE__ ) . '/../index.php',
-  '\impcthub\remove_role_on_plugin_deactivation' );
+}
 
 function remove_role_on_plugin_deactivation() {
   remove_role( get_role_name() );
