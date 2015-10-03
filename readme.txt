@@ -1,4 +1,4 @@
-=== Impact Hub Supercharger ===
+=== Toolbox and Showroom Supercharger ===
 Contributors: nilsnh
 Tags: impacthub
 Requires at least: 3.1
@@ -12,6 +12,8 @@ This plugin adds custom posts "Entrepreneur toolbox" and "Member showroom" and a
 == Description ==
 
 This plugin was tailored for the Impact Hub Bergen site. And it might be useful for other sites that are looking to implement similar functionality.
+
+Please note: This plugin is by no means officially supported by the Impact Hub company.
 
 What the plugin does:
 
