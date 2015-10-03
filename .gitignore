@@ -1,2 +1,4 @@
 *.sh
 grunt-wordpress-deploy/
+svn-repo-impact-hub-supercharger
+assets
