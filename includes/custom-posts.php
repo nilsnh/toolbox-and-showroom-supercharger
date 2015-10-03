@@ -47,7 +47,7 @@ function create_member_profile_post_type() {
     );
 }
 
-// Code for automatically making a post type private
+// Make post visibility private by default for 'impcthub-resource' custom posts
 // source: http://wordpress.stackexchange.com/a/118976
 add_action( 'post_submitbox_misc_actions' , '\impcthub\change_visibility_metabox_value' );
 function change_visibility_metabox_value(){
