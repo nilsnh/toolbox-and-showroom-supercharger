@@ -10,15 +10,15 @@ function create_resource_post_type() {
         ),
       'public' => true,
       'has_archive' => true,
-      'rewrite' => array('slug' => __('toolbox')),
       'taxonomies' => array('category'),
       'supports' => array(
         'title',
         'editor',
-        'author',
-        'comments',
+        'thumbnail',
         'revisions',
-        'excerpt'
+        'excerpt',
+        'author',
+        'comments'
         )
       )
     );
@@ -35,7 +35,6 @@ function create_member_profile_post_type() {
       'public' => true,
       'has_archive' => true,
       'taxonomies' => array('category'),
-      'rewrite' => array('slug' => __('hubmembers')),
       'supports' => array(
         'title',
         'editor',

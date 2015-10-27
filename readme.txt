@@ -3,7 +3,7 @@ Contributors: nilsnh
 Tags: impacthub
 Requires at least: 3.1
 Tested up to: 4.3
-Stable tag: trunk
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,10 @@ For questions, comments and concerns you might tweet me at @thunki or find me at
 None yet.
 
 == Changelog ==
+
+= 1.1 =
+* Enabled featured image for resource.
+* Turned off url rewrite for both custom post types.
 
 = 1.0 =
 * Initial release.
