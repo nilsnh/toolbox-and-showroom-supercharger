@@ -10,6 +10,7 @@ function create_resource_post_type() {
         ),
       'public' => true,
       'has_archive' => true,
+      'rewrite' => array('slug' => __('toolbox')),
       'taxonomies' => array('category'),
       'supports' => array(
         'title',
@@ -34,6 +35,7 @@ function create_member_profile_post_type() {
         ),
       'public' => true,
       'has_archive' => true,
+      'rewrite' => array('slug' => __('hubmembers')),
       'taxonomies' => array('category'),
       'supports' => array(
         'title',
