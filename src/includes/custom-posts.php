@@ -42,7 +42,8 @@ function create_member_profile_post_type() {
         'editor',
         'thumbnail',
         'revisions',
-        'excerpt'
+        'excerpt',
+        'author'
         )
       )
     );

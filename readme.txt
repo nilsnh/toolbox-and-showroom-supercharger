@@ -49,6 +49,9 @@ None yet.
 
 == Changelog ==
 
+= 1.3 =
+* Enabled author setting for the custom post type Member showcase.
+
 = 1.2 =
 * Revert previous change: "Turned off url rewrite for both custom post types."
 
