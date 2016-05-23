@@ -50,7 +50,7 @@ None yet.
 == Changelog ==
 
 = 1.4 =
-* Bugfix: Custom role was not showing in author list wanting to change post author. Solved this by adding user capability 'level_2' (author). More info: https://core.trac.wordpress.org/ticket/16841
+* Bugfix: Show Hubmember users in the author list when changing post author.
 
 = 1.3 =
 * Enabled author setting for the custom post type Member showcase.
