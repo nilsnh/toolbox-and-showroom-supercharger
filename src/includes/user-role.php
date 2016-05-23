@@ -14,7 +14,8 @@ function add_role_on_plugin_activation() {
       'edit_private_posts' => true,
       'edit_published_posts' => true,
       'delete_posts' => true,
-      'upload_files' => true
+      'upload_files' => true,
+      'level_2' => true
       ) );
 
 }

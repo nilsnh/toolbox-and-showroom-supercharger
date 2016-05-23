@@ -3,7 +3,7 @@ Contributors: nilsnh
 Tags: impacthub
 Requires at least: 3.1
 Tested up to: 4.3
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ For questions, comments and concerns you might tweet me at @thunki or find me at
 None yet.
 
 == Changelog ==
+
+= 1.4 =
+* Bugfix: Custom role was not showing in author list wanting to change post author. Solved this by adding user capability 'level_2' (author). More info: https://core.trac.wordpress.org/ticket/16841
 
 = 1.3 =
 * Enabled author setting for the custom post type Member showcase.
