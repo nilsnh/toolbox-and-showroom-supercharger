@@ -4,7 +4,7 @@ Plugin Name: Impact Hub Supercharger
 Plugin URI: http://wordpress.org/plugins/impact-hub-super-charger/
 Description: This plugin adds custom posts "Entrepreneur toolbox" and "Member showroom" and a shortcode for displaying them.
 Author: Thunki SA
-Version: 1.5
+Version: 1.6
 Author URI: http://thunki.no/
 */
 
