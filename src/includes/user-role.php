@@ -6,7 +6,7 @@ function add_role_on_plugin_activation() {
 
   remove_role( $role );
 
-  add_role( $role , 'Hub member',
+  add_role( $role , 'Hub member v2',
     array(
       'read' => true,
       'read_private_posts' => true,
@@ -25,7 +25,7 @@ function remove_role_on_plugin_deactivation() {
 }
 
 function get_role_name() {
-  return "hubmember";
+  return "hubmemberv2";
 }
 
 /* Add logged in user role to admin body as class so that we

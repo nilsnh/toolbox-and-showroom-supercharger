@@ -49,6 +49,9 @@ None yet.
 
 == Changelog ==
 
+= 1.5 =
+* Bugfix for the bugfix: Replace old role with a fresh one.
+
 = 1.4 =
 * Bugfix: Show Hubmember users in the author list when changing post author.
 
